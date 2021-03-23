@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1 style="font-family: 'Bebas Neue';  font-size: 66px; color:white; text-shadow: 1px 1px 2px black;"><center>Gestion des Users<center></h1>
+
+    <a class="btn btn-warning btn-block" href="{{ path('admin_user_new') }}">New</a>
+    <br>
+    <table class="table table-striped text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                {# <th>Password</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="bg-light">
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
+                <td>
+                {% set role = user.roles|json_encode %}
+                {% if role == '["ROLE_USER"]' %}Utilisateur{% endif %}
+                {% if role == '["ROLE_ADMIN"]' %}Administrateur{% endif %}
+                {# {{ user.roles ? user.roles|json_encode : '' }} #}
+                </td>
+                {# <td>{{ user.password }}</td> #}
+                <td>
+                    <a class="btn btn-primary" href="{{ path('admin_user_show', {'id': user.id}) }}"><i class="far fa-eye"></i></a>
+                    <a class="btn btn-warning" href="{{ path('admin_user_edit', {'id': user.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

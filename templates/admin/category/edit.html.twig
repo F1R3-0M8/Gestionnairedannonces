@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Category{% endblock %}
+
+{% block body %}
+    <h1 style="font-family: 'Bebas Neue';  font-size: 66px; color:white; text-shadow: 1px 1px 2px black;"><center>Edit Category<center></h1>
+    <a class="btn btn-dark btn-block" href="{{ path('admin_category_index') }}"><i class="fas fa-undo"></i></a>
+    <br>
+    {{ include('admin/category/_form.html.twig', {'button_label': 'Update'}) }}
+    
+    {{ include('admin/category/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Annonce{% endblock %}
+
+{% block body %}
+    <a class="btn btn-dark btn-sm btn-block" href="{{ path('admin_annonce_index') }}"><i class="fas fa-undo"></i></a>
+    <br>
+    <h1 style="font-family: 'Bebas Neue';  font-size: 66px; color:white; text-shadow: 1px 1px 2px black;"><center>Create new Annonce<center></h1>
+
+    {{ include('admin/annonce/_form.html.twig') }}
+{% endblock %}

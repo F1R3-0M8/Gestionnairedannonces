@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce index{% endblock %}
+
+{% block body %}
+    <h1 style="font-family: 'Bebas Neue';  font-size: 66px; color:white; text-shadow: 1px 1px 2px black;"><center>Annonces admin <center></h1>
+
+    <a class="btn btn-warning btn-block" href="{{ path('admin_annonce_new') }}">New</a>
+    <br>
+    <table class="table table-striped text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Annoucer</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="bg-light">
+        {% for annonce in annonces %}
+            <tr>
+                <td>{{ annonce.id }}</td>
+                <td>{{ annonce.title }}</td>
+                <td>{{ annonce.annoucer }}</td>
+                <td>{{ annonce.description }}</td>
+                <td>{{ annonce.date|date('d-m-y') }}</td>
+                <td>
+                {% if annonce.image.name == NULL %}
+                Non
+                {% endif %}
+                {% if annonce.image.name %}
+                Oui
+                {% endif %}
+                {# {{ annonce.image.name }} #}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('admin_annonce_show', {'id': annonce.id}) }}"><i class="far fa-eye"></i></a>
+                    <a class="btn btn-warning" href="{{ path('admin_annonce_edit', {'id': annonce.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

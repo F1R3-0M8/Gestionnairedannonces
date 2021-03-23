@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category{% endblock %}
+
+{% block body %}
+    <h1 style="font-family: 'Bebas Neue';  font-size: 66px; color:white; text-shadow: 1px 1px 2px black;"><center>Category [{{category.id}}]<center></h1>
+
+    <table class="table table-striped text-center">
+        <tbody class="btn-light">
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ category.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-group btn-block" role="group" aria-label="Basic example">
+        <a class="btn btn-dark" href="{{ path('admin_category_index') }}"><i class="fas fa-undo"></i></a>
+        <a class="btn btn-warning" href="{{ path('admin_category_edit', {'id': category.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+    </div>
+
+    {{ include('admin/category/_delete_form.html.twig') }}
+{% endblock %}

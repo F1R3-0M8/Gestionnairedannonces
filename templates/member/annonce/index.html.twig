@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Toutes les annonces {% endblock %}
+
+{% block body2 %}
+
+<div class="container">
+  <div class="row mb-2">
+
+  {% for annonce in annonces %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-light">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{ annonce.annoucer }}</strong>
+          <h3 class="mb-0">{{ annonce.title }}</h3>
+          <div class="mb-1 text-muted">{{ annonce.date|date('d-m-y') }}</div>
+          <p class="card-text mb-auto">{{ annonce.description }}</p>
+          {# <p class="card-text mb-auto">{{ annonce.image.name }}</p> #}
+          <a href="{{ path('member_annonce_show', {'id': annonce.id}) }}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img class="bd-placeholder-img" width="250" height="250" src="{{ vich_uploader_asset(annonce) }}" alt="Logo de l'entreprise" />
+        </div>
+      </div>
+    </div>
+
+  {% else %}
+    <div class="col-md-6">
+      <p colspan="6">no records found</p>
+    </div>
+  {% endfor %}
+
+  </div>
+</div>
+
+</main>
+{% endblock %}

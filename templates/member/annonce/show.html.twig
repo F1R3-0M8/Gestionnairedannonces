@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category{% endblock %}
+
+{% block body %}
+    <h1 style="font-family: 'Bebas Neue';  font-size: 66px; color:white; text-shadow: 1px 1px 2px black;"><center>{{ annonce.title }}<center></h1>
+
+    <div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative  btn-light">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{ annonce.annoucer }}</strong>
+          <div class="mb-1 text-muted">{{ annonce.date|date('d-m-y') }}</div>
+          <p class="card-text mb-auto">{{ annonce.description }}</p>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          {# <svg class="bd-placeholder-img" width="200" height="250" xmlns="https://symfony.com/logos/symfony_black_03.png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>LOGO-ENTREPRISE</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> #}
+          <img class="bd-placeholder-img" width="400" height="500" src="{{ vich_uploader_asset(annonce) }}" alt="Logo de l'entreprise" />
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group btn-block" role="group" aria-label="Basic example">
+        <a class="btn btn-dark" href="{{ path('member_annonce_index') }}"><i class="fas fa-undo"></i></a>
+    </div>
+{% endblock %}

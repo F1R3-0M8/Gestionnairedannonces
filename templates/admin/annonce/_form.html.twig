@@ -1,0 +1,23 @@
+{# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }} #}
+
+{{ form_start(form) }}
+<div class="btn btn-dark btn-block">
+<div class="btn btn-dark btn-block">{{ form_row(form.title) }}</div>
+
+<div class="btn btn-dark btn-block">{{ form_row(form.annoucer) }}</div>
+
+{#{ form_row(form.date) }#}
+
+<div class="btn btn-dark btn-block">{{ form_row(form.category) }}</div>
+
+<div class="btn btn-dark btn-block">{{ form_row(form.description) }}</div>
+
+<div class="btn btn-dark btn-block">{{ form_row(form.imageFile) }}</div>
+</div>
+
+<button class="btn btn-success btn-block">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
